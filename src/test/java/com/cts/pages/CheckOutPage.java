@@ -6,9 +6,15 @@ import org.openqa.selenium.WebDriver;
 public class CheckOutPage {
 	
 	
-	public static By checkoutLoc=By.xpath("//a[@class='checkout-button button alt wc-forward']");
+	private By checkoutLoc=By.xpath("//a[@class='checkout-button button alt wc-forward']");
+	
+	private WebDriver driver;
+	public CheckOutPage(WebDriver driver)
+	{
+		this.driver=driver;
+	}
 
-	public static void clickOnCheckOut(WebDriver driver)
+	public  void clickOnCheckOut()
 	{
 	driver.findElement(checkoutLoc).click();
 	}

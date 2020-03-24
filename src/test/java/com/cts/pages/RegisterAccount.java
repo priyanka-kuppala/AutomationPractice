@@ -5,37 +5,41 @@ import org.openqa.selenium.WebDriver;
 
 public class RegisterAccount {
 
-	public static By enterUsenameLoc = By.id("reg_email");
-	public static By enterPasswordLoc = By.id("reg_password");
-	public static By clickonRegisterLoc = By.xpath("//input[@value='Register']");
-	public static By enteremailLoc = By.id("username");
-	public static By enterPassowrdLoc = By.id("password");
-	public static By clickonLoginLoc = By.xpath("//input[@name='login']");
+	private By enterUsenameLoc = By.id("reg_email");
+	private By enterPasswordLoc = By.id("reg_password");
+	private By clickonRegisterLoc = By.xpath("//input[@value='Register']");
+	private By enteremailLoc = By.id("username");
+	private By enterPassowrdLoc = By.id("password");
+	private By clickonLoginLoc = By.xpath("//input[@name='login']");
 	
+	private WebDriver driver;
+	public RegisterAccount(WebDriver driver)
+	{
+		this.driver=driver;
+	}
 	
-	
-	public static void enterUsername(WebDriver driver, String username)
+	public  void enterUsername(WebDriver driver, String username)
 	{
 		driver.findElement(enterUsenameLoc).sendKeys(username);
 	}
-	public static void enterPassword(WebDriver driver, String password)
+	public  void enterPassword(WebDriver driver, String password)
 	{
 		driver.findElement(enterPasswordLoc).sendKeys(password);
 	}
 
-	public static void clickOnRegister(WebDriver driver)
+	public  void clickOnRegister(WebDriver driver)
 	{
 		driver.findElement(clickonRegisterLoc).click();
 	}
-	public static void enterEmail(WebDriver driver, String emailname)
+	public  void enterEmail(String emailname)
 	{
 		driver.findElement(enteremailLoc).sendKeys(emailname);
 	}
-	public static void enterLoginPassword(WebDriver driver, String loginpassword)
+	public  void enterLoginPassword(String loginpassword)
 	{
 		driver.findElement(enterPassowrdLoc).sendKeys(loginpassword);
 	}
-	public static void clickOnLogin(WebDriver driver)
+	public  void clickOnLogin()
 	{
 		driver.findElement(clickonLoginLoc).click();
 	}

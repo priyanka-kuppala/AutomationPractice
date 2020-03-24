@@ -44,34 +44,39 @@ public class StepDefinition {
 	@When("I click on login button and enter loginusername as {string} and I enter loginpassword as {string}")
 	public void i_click_on_login_button_and_enter_loginusername_as_and_I_enter_loginpassword_as(String emailname,
 			String loginpassword) {
-		MyAccount.clickOnMyAccount(driver);
-		RegisterAccount.enterEmail(driver, emailname);
-		RegisterAccount.enterLoginPassword(driver, loginpassword);
+		MyAccount myAccount= new MyAccount(driver);
+		myAccount.clickOnMyAccount();
+		RegisterAccount registerAccount=new RegisterAccount(driver);
+		registerAccount.enterEmail(emailname);
+		registerAccount.enterLoginPassword(loginpassword);
 		
 	}
 
 	@When("click on login button")
 	public void click_on_login_button() {
-		RegisterAccount.clickOnLogin(driver);
+		RegisterAccount registerAccount=new RegisterAccount(driver);
+		registerAccount.clickOnLogin();
 	}
 
 	@When("I click on shop")
 	public void i_click_on_shop() {
-		LogoutAccount.clickOnShop(driver);
+		LogoutAccount logoutAccount=new LogoutAccount(driver);
+		logoutAccount.clickOnShop();
 	}
 
 	@When("I select a book")
 	public void i_select_a_book() {
-		LogoutAccount.clickOnShop(driver);
-		LogoutAccount.clickOnHtml(driver);
-		LogoutAccount.clickOnBook(driver);
+		LogoutAccount logoutAccount=new LogoutAccount(driver);
+		logoutAccount.clickOnShop();
+		logoutAccount.clickOnHtml();
+		logoutAccount.clickOnBook();
 	}
 
 	@When("I click on the add to basket button")
 	public void i_click_on_the_add_to_basket_button() {
-
-		LogoutAccount.addtoCart(driver);
-		LogoutAccount.viewCart(driver);
+		LogoutAccount logoutAccount=new LogoutAccount(driver);
+		logoutAccount.addtoCart();
+		logoutAccount.viewCart();
 
 	}
 
@@ -85,12 +90,13 @@ public class StepDefinition {
 	// scenario 2 remove an item form the cart
 	@When("I delete from cart")
 	public void i_delete_from_cart() {
-		LogoutAccount.clickOnShop(driver);
-		 LogoutAccount.clickOnHtml(driver);
-		   LogoutAccount.clickOnBook(driver);
-		   LogoutAccount.addtoCart(driver);
-		   LogoutAccount.viewCart(driver);
-		LogoutAccount.removeAnItem(driver);
+		LogoutAccount logoutAccount=new LogoutAccount(driver);
+		logoutAccount.clickOnShop();
+		 logoutAccount.clickOnHtml();
+		   logoutAccount.clickOnBook();
+		   logoutAccount.addtoCart();
+		   logoutAccount.viewCart();
+		logoutAccount.removeAnItem();
 
 	}
 
@@ -102,19 +108,23 @@ public class StepDefinition {
 	// scenario 3 click on proceed to checkout
 	@When("I click on proceed to checkout")
 	public void i_click_on_proceed_to_checkout() {
+		LogoutAccount logoutAccount=new LogoutAccount(driver);
 		
-		LogoutAccount.clickOnShop(driver);
-		LogoutAccount.clickOnHtml(driver);
-		LogoutAccount.clickOnBook(driver);
-		LogoutAccount.addtoCart(driver);
-		LogoutAccount.viewCart(driver);
-		CheckOutPage.clickOnCheckOut(driver);
+		logoutAccount.clickOnShop();
+		logoutAccount.clickOnHtml();
+		logoutAccount.clickOnBook();
+		logoutAccount.addtoCart();
+		logoutAccount.viewCart();
+		
+		CheckOutPage checkOutPage=new CheckOutPage(driver);
+		checkOutPage.clickOnCheckOut();
 
 	}
 
 	@Then("It should navigate to the next page")
 	public void it_should_navigate_to_the_next_page() {
-	   String actualText=BillingPage.billText(driver);
+		BillingPage billingPage=new BillingPage(driver);
+	   String actualText=billingPage.billText();
 	   String expectedTitle="Billing Details";
 	   Assert.assertEquals(expectedTitle,actualText);
 	   
@@ -130,21 +140,21 @@ public class StepDefinition {
 	    // Double, Byte, Short, Long, BigInteger or BigDecimal.
 	    //
 	    // For other transformations you can register a DataTableType.
-	 	
+	 	BillingPage billingPage=new BillingPage(driver);
 			List<Map<String, String>> data = dataTable.asMaps();
-			BillingPage.enterFirstName(driver, data.get(0).get("firstname"));
-			BillingPage.enterlastName(driver, data.get(0).get("lastname"));
-			BillingPage.enterCompany(driver, data.get(0).get("companyname"));
-			BillingPage.enterEmail(driver, data.get(0).get("email"));
-			BillingPage.enterPhoneNumber(driver, data.get(0).get("phonenumber"));
-			BillingPage.enterAddress(driver, data.get(0).get("address"));
-			BillingPage.enterAddress2(driver, data.get(0).get("address2"));
-		BillingPage.enterCity(driver, data.get(0).get("town"));
-			BillingPage.clickonStateSelectBox(driver);
-		BillingPage.enterState(driver, data.get(0).get("state"));
-			BillingPage.clickOnState(driver);
-			BillingPage.enterPincode(driver, data.get(0).get("pincode"));
-			BillingPage.clickOnPayment(driver);
+			billingPage.enterFirstName(data.get(0).get("firstname"));
+			billingPage.enterlastName(data.get(0).get("lastname"));
+			billingPage.enterCompany(data.get(0).get("companyname"));
+			billingPage.enterEmail(data.get(0).get("email"));
+			billingPage.enterPhoneNumber(data.get(0).get("phonenumber"));
+			billingPage.enterAddress(data.get(0).get("address"));
+			billingPage.enterAddress2(data.get(0).get("address2"));
+		billingPage.enterCity(data.get(0).get("town"));
+			billingPage.clickonStateSelectBox();
+		billingPage.enterState(data.get(0).get("state"));
+			billingPage.clickOnState();
+			billingPage.enterPincode(data.get(0).get("pincode"));
+			billingPage.clickOnPayment();
 			
 
 	}
@@ -158,14 +168,15 @@ public class StepDefinition {
 
 	@When("I click on the place order")
 	public void i_click_on_the_place_order() {
-		BillingPage.clickOnPlaceOrder(driver);
+		BillingPage billingPage=new BillingPage(driver);
+		billingPage.clickOnPlaceOrder();
 		 
 	}
 
 	@Then("I should get the message as orderplaced")
 	public void i_should_get_the_message_as_orderplaced() {
-		
-		String ordText=BillingPage.orderText(driver);
+		BillingPage billingPage=new BillingPage(driver);
+		String ordText=billingPage.orderText();
 		String expected="Thank you. Your order has been received.";
 		Assert.assertEquals(expected, ordText);
 		System.out.println(ordText);

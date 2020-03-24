@@ -7,48 +7,53 @@ import org.openqa.selenium.support.ui.Select;
 
 public class LogoutAccount {
 	
-	public static By clickOnLogOutLoc = By.xpath("//a[text()='Logout']");
-	public static By clickOnShopLoc = By.xpath("//a[text()='Shop']");
-	 public static By clickOnHtmlLoc= By.linkText("HTML");
-	 public static By clickOnBookLoc=By.xpath("//img[@title='Mastering HTML5 Forms']");
-	 public static By addtoCartLoc=By.xpath("//button[text()='Add to basket']");
-	 public static By viewCartLoc=By.xpath("//a[@title='View your shopping cart']");
-	private static By demositeLoc = By.linkText("Demo Site");
-	private static By removeitemLoc=By.xpath("//a[@title='Remove this item']");
+	private  By clickOnLogOutLoc = By.xpath("//a[text()='Logout']");
+	private  By clickOnShopLoc = By.xpath("//a[text()='Shop']");
+	 private  By clickOnHtmlLoc= By.linkText("HTML");
+	 private  By clickOnBookLoc=By.xpath("//img[@title='Mastering HTML5 Forms']");
+	 private  By addtoCartLoc=By.xpath("//button[text()='Add to basket']");
+	 private  By viewCartLoc=By.xpath("//a[@title='View your shopping cart']");
+	private  By demositeLoc = By.linkText("Demo Site");
+	private  By removeitemLoc=By.xpath("//a[@title='Remove this item']");
 	
+	private WebDriver driver;
+	public LogoutAccount(WebDriver driver)
+	{
+		this.driver=driver;
+	}
 	
-	public static void clickOnLogOut(WebDriver driver)
+	public  void clickOnLogOut()
 	{
 		driver.findElement(clickOnLogOutLoc).click();
 	}
-	public static void clickOnShop(WebDriver driver)
+	public  void clickOnShop()
 	{
 		driver.findElement(clickOnShopLoc).click();
 	}
-	public static void clickOnHtml(WebDriver driver)
+	public  void clickOnHtml()
 	{
 		driver.findElement(clickOnHtmlLoc).click();
 	}
 	
-	public static void clickOnBook(WebDriver driver)
+	public  void clickOnBook()
 	{
 		driver.findElement(clickOnBookLoc).click();
 	}
 	
-	public static void addtoCart(WebDriver driver)
+	public  void addtoCart()
 	{
 		driver.findElement(addtoCartLoc).click();
 	}
-	public static void viewCart(WebDriver driver)
+	public  void viewCart()
 	{
 		driver.findElement(viewCartLoc).click();
 	}
-	public static void clickOnDemosite(WebDriver driver)
+	public  void clickOnDemosite()
 	{
 
 		driver.findElement(demositeLoc).click();
 		}
-	public static void removeAnItem(WebDriver driver)
+	public  void removeAnItem()
 	{
 		 driver.findElement(removeitemLoc).click();
 	}
