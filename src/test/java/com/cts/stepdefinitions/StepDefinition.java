@@ -14,6 +14,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+
 import com.cts.pages.BillingPage;
 import com.cts.pages.CheckOutPage;
 import com.cts.pages.LogoutAccount;
@@ -31,13 +32,13 @@ public class StepDefinition {
 
 	@Given("User launch the browser with practiceautomationtestingPage")
 	public void user_launch_the_browser_with_practiceautomationtestingPage() {
+		
 		System.setProperty("webdriver.chrome.driver", "src/main/resources/driver/chromedriver.exe");
 		System.out.println("Given");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-		driver.get("http://practice.automationtesting.in/");
-
+		driver.get("http://practice.automationtesting.in/");		
 	}
 
 //scenario 1 add an item to the cart
@@ -165,11 +166,12 @@ public class StepDefinition {
 	}
 
 	
-
+// scenario 5 place order
 	@When("I click on the place order")
 	public void i_click_on_the_place_order() {
 		BillingPage billingPage=new BillingPage(driver);
 		billingPage.clickOnPlaceOrder();
+		
 		 
 	}
 
@@ -180,6 +182,10 @@ public class StepDefinition {
 		String expected="Thank you. Your order has been received.";
 		Assert.assertEquals(expected, ordText);
 		System.out.println(ordText);
+		billingPage.screenShot();
+		
+		
+		
 		
 		
 		 

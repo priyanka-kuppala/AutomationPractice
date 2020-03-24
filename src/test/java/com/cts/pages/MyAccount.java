@@ -15,7 +15,7 @@ public class MyAccount {
 	
 	public  void clickOnMyAccount()
 	{
-		driver.findElement(clickOnmyAccountLoc).click();;
+		driver.findElement(clickOnmyAccountLoc).click();
 	}
 	
 

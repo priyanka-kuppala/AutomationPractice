@@ -1,6 +1,11 @@
 package com.cts.pages;
 
+import java.io.File;
+import java.sql.Date;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -110,7 +115,14 @@ public class BillingPage {
 		String text=driver.findElement(orderText).getText();
 		return text;
 	}
-	
+	public void screenShot()
+	{
+		
+		TakesScreenshot ts=(TakesScreenshot)driver;
+		File file=ts.getScreenshotAs(OutputType.FILE);
+		file.renameTo(new File("src/test/resources/screenshot.png"));
+		
+	}
 	
 	}
 
