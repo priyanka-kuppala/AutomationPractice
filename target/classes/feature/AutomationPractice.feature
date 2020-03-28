@@ -7,7 +7,7 @@ Background:
 	Given User launch the browser with practiceautomationtestingPage 
 	
 Scenario: Add to cart 
-	When I click on login button and enter loginusername as 'pavanapriyanaka56@gmail.com' and I enter loginpassword as 'Ramadhiganesh@park12K6' 
+	When I enter login details from Excel "src/test/resources/resources/Book1.xlsx" with SheetName "LoginCredentials" 
 	And click on login button 
 	And I click on shop 
 	And I select a book 
@@ -55,4 +55,5 @@ Scenario: Billing details
 		|priyanka|kuppala|cts|pavanapriyanaka56@gmail.com|9563214569|bluelotus|lotus pg|chennai|tamil|600119|
 	And I click on the place order
 	Then  I should get the message as orderplaced
-	      
+	
+	

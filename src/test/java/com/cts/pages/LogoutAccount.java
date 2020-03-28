@@ -15,8 +15,9 @@ public class LogoutAccount {
 	 private  By viewCartLoc=By.xpath("//a[@title='View your shopping cart']");
 	private  By demositeLoc = By.linkText("Demo Site");
 	private  By removeitemLoc=By.xpath("//a[@title='Remove this item']");
+	private By emptycartLoc=By.xpath("//p[contains(text(),'Your basket is currently empty.')]");
 	
-	private WebDriver driver;
+	private  WebDriver driver;
 	public LogoutAccount(WebDriver driver)
 	{
 		this.driver=driver;
@@ -58,9 +59,11 @@ public class LogoutAccount {
 		 driver.findElement(removeitemLoc).click();
 	}
 	
-//	public static String emptyCart(WebDriver drievr,String actual)
-//	{
-//	actual=driver.findElement(By.xpath)
+	public  String emptyCart()
+	{
+	String actualText=driver.findElement(emptycartLoc).getText();
+	return actualText;
+	}
 
 	
 
