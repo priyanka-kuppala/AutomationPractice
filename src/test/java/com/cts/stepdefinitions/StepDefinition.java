@@ -175,7 +175,7 @@ public class StepDefinition {
 		Assert.assertEquals(expected, actual);
 		//printing the text
 		System.out.println(actual);
-		//close the current window
+		
 		
 	}
 
@@ -215,7 +215,7 @@ public class StepDefinition {
 		Assert.assertEquals(expectedTitle, actualText);
 		//printing the title
 		System.out.println(actualText);
-		//close the current window
+		
 		
 
 	}
@@ -306,7 +306,7 @@ public class StepDefinition {
 		Assert.assertEquals("Thank you. Your order has been received.", ordText);
 		//print the text
 		System.out.println(ordText);
-		// To close the current window
+		
 		
 
 	}
