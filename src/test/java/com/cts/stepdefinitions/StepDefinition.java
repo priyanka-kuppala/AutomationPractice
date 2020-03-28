@@ -124,7 +124,7 @@ public class StepDefinition {
 		//getting particular text from pagesource
 		String pageSource = driver.getPageSource();
 		boolean check = pageSource.contains("HTML5 Forms");
-		//assertion check 
+		//assertion check getting text from pagesource
 		Assert.assertTrue("Not Passed", check);
 		
 	}
