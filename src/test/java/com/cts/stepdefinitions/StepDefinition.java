@@ -284,7 +284,7 @@ public class StepDefinition {
 		//assert to check the text in the page
 		Assert.assertTrue("Not Passed", check);
 		System.out.println("then");
-		//close the current window
+		
 		
 	}
 
